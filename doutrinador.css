@@ -1,0 +1,24 @@
+.content{ 
+    width: 600;
+    height: 300;
+    background-color:whitesmoke;
+    
+}
+.title{
+    width: 600;
+    height: 33;
+    background-color: gray;
+    text-align: center;
+}
+
+.button
+{
+    cursor: pointer;    
+    border: 1px solid #A9A9A9;
+    font-size: 14px;
+    padding: 3px;    
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    font-size: 1.1em;
+}

@@ -1,0 +1,89 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="alert.js"></script>
+    <link rel="stylesheet" href="doutrinador.css">
+    <style>
+        .divblue{
+            width: 10px;
+            height: 10px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <a href="#" id="link">Link teste</a>
+    </div>
+
+</body>
+<script>
+    $(document).ready(function(){
+        
+        // $("#gustavo").meuPlugin({text: "PAPAGUAIOAOIJDAFOISEN"});
+
+        $("#link").click(function(){            
+            var meutexto = "Ao excluir a permissão de acesso ao OneDrive, todos os anexos vinculados a esse repositório deixarão de ser visualizados pelo Novajus.Deseja realmente excluir esta permissão?<br> Por favor, digite o nome do repositório para confirmar:";
+            var meutitulo = "Excluir repositorio teste";
+            var meubutton = "Eu entendo as consequências, excluir permissão";
+            var confirmationText = "OneDrive";
+            newAlert(meutitulo, meutexto, meubutton, confirmationText);
+        });
+
+    });
+
+    // todo: transformar esse metodo num plugin jQuery
+    function newAlert(title, text, buttonText, confirmationText) {
+        
+        var divContent = $("<div/>")
+            .addClass("content");
+
+        var divTitle = $("<div/>")
+            .addClass("title")
+            .text(title);
+
+        var pText = $("<p/>")
+            .text(text);
+
+        var inputConfirmacao = $("<input/>")
+            .attr("name", "confirmacao")
+            .attr("id", "text");
+
+        var inputButton = $("<input/>")
+            .addClass("button")
+            .attr("type", "button")
+            .attr("id", "btconfirma")
+            .val(buttonText)
+            .prop("disabled", true);
+
+        divContent
+            .append(divTitle)
+            .append(pText)
+            .append(inputConfirmacao)
+            .append(inputButton);
+
+        var bodyElement = $("body");
+
+        bodyElement.append(divContent);
+
+        validateText(confirmationText);
+    }
+
+    validateText = function(confirmationText) {
+        $('#text').keyup(function() {
+            var isValid = $(this).val() === confirmationText;
+
+            if (isValid) {
+                $("#btconfirma").prop('disabled', false);
+            }else{
+                $("#btconfirma").prop('disabled', true);
+                }       
+        });
+
+        $("#btconfirma").click(function() {
+            alert("Repositório excluido com sucesso")
+        });
+    };
+</script>
+</html>
